@@ -1,5 +1,7 @@
 # transmission-api
-High level api for Transmission RPC written in Typescript
+An eddited version of the High level api for Transmission RPC written in Typescript.
+
+Removed the fs package so it can be used in Front-end-frameworks like Angular
 
 Provides a wrapper over the RPC interface of the [Transmission](http://transmissionbt.com) bittorrent client. 
 
