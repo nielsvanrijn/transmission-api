@@ -1,8 +1,6 @@
 import * as http from "http";
 import * as sd from "string_decoder";
 import * as EventEmitter  from "events";
-import * as url from "url";
-import * as fs from "fs";
 import { TransmissionRequest, TransmissionResponse } from "./Communication";
 import { Session, ISession, SessionSetOptions } from "./Session";
 import { Torrent, ITorrent, SetTorrentOptions, SetLocationOptions, RenameTorrentResponse, AddTorrentOptions } from "./Torrent"
