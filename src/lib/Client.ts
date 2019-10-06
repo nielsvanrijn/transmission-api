@@ -183,22 +183,8 @@ export class Client extends EventEmitter {
     async addTorrent(file: string, options?: AddTorrentOptions): Promise<ITorrent>
     async addTorrent(file: Buffer, options?: AddTorrentOptions): Promise<ITorrent>
     async addTorrent(file: any, options?: AddTorrentOptions): Promise<ITorrent> {
-        if (typeof file === 'string') {
-            let fileObj = url.parse(file);
-            if (!fileObj.protocol) {
-                try {
-                    fs.statSync(fileObj.href);
-                    options = Object.assign({}, options, { filename: fileObj.href });
-                } catch (e) {
-                    // is base64 string
-                    options = Object.assign({}, options, { metainfo: fileObj.href })
-                }
-            } else {
-                options = Object.assign({}, options, { filename: fileObj.href })
-            }
-        } else {
-            options = Object.assign({}, options, { metainfo: (<Buffer>file).toString('base64')});
-        }
+        
+        options = Object.assign({}, options, { metainfo: (<Buffer>file).toString('base64')});
 
         let req = new TransmissionRequest("torrent-add", options);
         let res = await this.sendRequest(req);
